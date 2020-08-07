@@ -27,7 +27,7 @@
     CompanyName = 'Unknown'
     
     # Copyright statement for this module
-    Copyright = '(c) 2020 LPL. All rights reserved.'
+    Copyright = '(c) 2020 Richard Phillips and Jason Saltsman. All rights reserved.'
     
     # Description of the functionality provided by this module
     Description = 'Powershell module to use the JIRA API'
