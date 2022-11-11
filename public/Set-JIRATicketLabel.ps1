@@ -18,7 +18,7 @@ function Set-JIRATicketLabel {
         $Headers = @{Authorization = $basicAuthValue}
     }
     process{
-        $LabelURI="/rest/api/3/issue/$($ticketID)"
+        $LabelURI="/rest/api/latest/issue/$($ticketID)"
         if ($add){
             $labelJson =@"
             {

@@ -18,7 +18,7 @@ function New-JIRAIssue {
         $Headers = @{Authorization = $basicAuthValue}
     }
     process{
-        $IssueURI="/rest/api/3/issue"
+        $IssueURI="/rest/api/latest/issue"
         $Body = @{
             "project"   = @{"id" = $ProjectKey}
             "issuetype" = @{"id" = [String] $IssueTypeId}

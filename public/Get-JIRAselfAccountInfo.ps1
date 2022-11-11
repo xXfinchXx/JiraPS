@@ -15,7 +15,7 @@ function Get-JIRAselfAccountInfo {
         $Headers = @{Authorization = $basicAuthValue}
     }
     process{
-        $out=Invoke-RestMethod -Uri "$($JIRAurl)/rest/api/3/myself" -Method Get -ContentType 'application/json' -Headers $headers
+        $out=Invoke-RestMethod -Uri "$($JIRAurl)/rest/api/latest/myself" -Method Get -ContentType 'application/json' -Headers $headers
     }
     end{
         if ($SetAsGlobalVariable){

@@ -2,7 +2,7 @@ function Set-JIRAConnection {
     param (
         [parameter(Mandatory=$true)]$APIKey,
         [parameter(Mandatory=$true)]$User,
-         $URL="https://lplfinancial.atlassian.net"
+         $URL=""
          
     )
 

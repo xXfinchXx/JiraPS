@@ -1,6 +1,8 @@
-function Get-JIRAUser {
-    param(
-        $accountId
+function set-JIRATicketCustomField {
+    param (
+        $ticketID,
+        $CustomFieldName,
+        $CustomFieldData
     )
     begin{
         If (!($JIRAuser)){
@@ -15,15 +17,18 @@ function Get-JIRAUser {
         $Headers = @{Authorization = $basicAuthValue}
     }
     process{
-        if ($accountId){
-            $UserURI="/rest/api/latest/user?accountId=$($accountID)"
-        }else{
-            Write-Warning "Need to enter an AccountID"
-            end
-        }   
-        $Out=Invoke-RestMethod -Uri "$($JIRAURL)$($Useruri)" -Method Get -ContentType 'application/json' -Headers $headers
+        $CustomFieldBody=@"
+{
+    "fields": {
+        "$($CustomFieldName)":"$($CustomFieldData)"
+    }
+}
+"@
+        $customFieldURI="/rest/api/latest/issue/$($TicketID)"
+        $CustomField=Invoke-RestMethod -Uri "$($JIRAUrl)$($customFieldURI)" -Method Put -ContentType 'application/json' -Headers $headers -body $CustomFieldBody
     }
     end{
-        $Out
-    }
-}    
+        Write-Verbose "CustomField has been edited on Ticket: $($TicketID)" -Verbose
+        $CustomField
+    }    
+}

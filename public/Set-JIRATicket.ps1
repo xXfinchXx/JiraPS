@@ -16,7 +16,7 @@ Function Set-JIRATicket {
         $Headers = @{Authorization = $basicAuthValue}
     }
     process{
-        $Issueuri="/rest/api/3/issue/$($TicketID)"
+        $Issueuri="/rest/api/latest/issue/$($TicketID)"
         $Final=Invoke-RestMethod -Uri "$($JIRAUrl)$($Issueuri)" -Method PUT -ContentType 'application/json' -Headers $headers -Body $fieldsJson
     }
     end{

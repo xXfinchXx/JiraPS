@@ -19,7 +19,7 @@ function Add-JIRATicketComment {
         $JIRAComment = [pscustomobject]@{
             body= $comment
         }
-        $commentURI="/rest/api/3/issue/$($TicketID)/comment"
+        $commentURI="/rest/api/latest/issue/$($TicketID)/comment"
         $Comment=Invoke-RestMethod -Uri "$($JIRAUrl)$($commenturi)" -Method Post -ContentType 'application/json' -Headers $headers -body ($JIRAComment | ConvertTo-Json)
     }
     end{

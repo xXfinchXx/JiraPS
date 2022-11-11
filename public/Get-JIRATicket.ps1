@@ -22,7 +22,7 @@
     }
     process{
         if($TicketID){
-            $Issueuri="/rest/api/3/issue/$($TicketID)"
+            $Issueuri="/rest/api/latest/issue/$($TicketID)"
             $Final=Invoke-RestMethod -Uri "$($JIRAUrl)$($Issueuri)" -Method Get -ContentType 'application/json' -Headers $headers
         }elseif ($TicketName) {
             if($jiraProject){}Else{
@@ -35,15 +35,15 @@
                     end
                 }
             }
-            $IssueNameuri="/rest/api/3/search?jql=project = $($JiraProject) AND summary ~ $($TicketName) &maxResults=300&fields=*all"
+            $IssueNameuri="/rest/api/latest/search?jql=project = $($JiraProject) AND summary ~ $($TicketName) &maxResults=300&fields=*all"
             $Final=Invoke-RestMethod -Uri "$($JIRAUrl)$($IssueNameuri)" -Method Get -ContentType 'application/json' -Headers $headers
         }elseif ($SearchTerm) {
-            $allIssuesuri="/rest/api/3/search?jql=text ~ $($SearchTerm) &maxResults=300&fields=*all"
+            $allIssuesuri="/rest/api/latest/search?jql=text ~ $($SearchTerm) &maxResults=300&fields=*all"
             $issuelist=Invoke-RestMethod -Uri "$($JIRAUrl)$($allIssuesuri)" -Method Get -ContentType 'application/json' -Headers $headers
             $final = $issuelist | Where Summary -Match $searchterm
         }elseif ($Mine) {
             $Self=Get-JIRAselfAccountInfo
-            $IssueNameuri="/rest/api/3/search?jql=assignee = ($($self.accountId)) &maxResults=300&fields=*all"
+            $IssueNameuri="/rest/api/latest/search?jql=assignee = ($($self.accountId)) &maxResults=300&fields=*all"
             $Final=Invoke-RestMethod -Uri "$($JIRAUrl)$($IssueNameuri)" -Method Get -ContentType 'application/json' -Headers $headers
         }    
     }

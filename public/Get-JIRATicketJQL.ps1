@@ -1,6 +1,7 @@
-function Get-JIRAUser {
-    param(
-        $accountId
+Function Get-JIRATicketJQL {
+    Param(
+        $JQL,
+        [switch]$table
     )
     begin{
         If (!($JIRAuser)){
@@ -15,15 +16,16 @@ function Get-JIRAUser {
         $Headers = @{Authorization = $basicAuthValue}
     }
     process{
-        if ($accountId){
-            $UserURI="/rest/api/latest/user?accountId=$($accountID)"
-        }else{
-            Write-Warning "Need to enter an AccountID"
-            end
-        }   
-        $Out=Invoke-RestMethod -Uri "$($JIRAURL)$($Useruri)" -Method Get -ContentType 'application/json' -Headers $headers
+            if ($JQL -contains " "){$jql=$jql -replace " ","\+" }
+            $allIssuesuri="/rest/api/latest/search?jql=$($JQL)&maxResults=300&fields=*all"
+            $issuelist=Invoke-RestMethod -Uri "$($JIRAUrl)$($allIssuesuri)" -Method Get -ContentType 'application/json' -Headers $headers
+            $final = $issuelist
     }
     end{
-        $Out
+        if ($table){
+            $Final | FT *
+        }else{
+            $Final
+        }
     }
-}    
+}
