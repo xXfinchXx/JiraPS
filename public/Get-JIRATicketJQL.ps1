@@ -17,7 +17,7 @@ Function Get-JIRATicketJQL {
     }
     process{
             if ($JQL -contains " "){$jql=$jql -replace " ","\+" }
-            $allIssuesuri="/rest/api/latest/search?jql=$($JQL)&maxResults=300&fields=*all"
+            $allIssuesuri="/rest/api/latest/search?jql=$($JQL)&maxResults=250&startAt=100&fields=*all"
             $issuelist=Invoke-RestMethod -Uri "$($JIRAUrl)$($allIssuesuri)" -Method Get -ContentType 'application/json' -Headers $headers
             $final = $issuelist
     }
