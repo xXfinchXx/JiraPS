@@ -1,0 +1,53 @@
+function get-jirastatusmap {
+    process{
+        (@{JIRAStatus  = "Open"
+        development = "On"
+        qa          = "Off"
+        "qa-2"      = "Off"
+        uat         = "Off"
+        production  = "Off"
+        demo        = "Off"},
+        @{JIRAStatus  = "In Development"
+        development = "On"
+        qa          = "Off"
+        "qa-2"      = "Off"
+        uat         = "Off"
+        production  = "Off"
+        demo        = "Off"},
+        @{JIRAStatus  = "QA Testing"
+        development = "On"
+        qa          = "On"
+        "qa-2"      = "On"
+        uat         = "Off"
+        production  = "Off"
+        demo        = "Off"},
+        @{JIRAStatus  = "QA Confirmed"
+        development = "On"
+        qa          = "On"
+        "qa-2"      = "On"
+        uat         = "On"
+        production  = "Off"
+        demo        = "Off"},
+        @{JIRAStatus  = "Done"
+        development = "On"
+        qa          = "On"
+        "qa-2"      = "On"
+        uat         = "On"
+        production  = "On"
+        demo        = "On"},
+        @{JIRAStatus  = "Code Checked In"
+        development = "On"
+        qa          = "Off"
+        "qa-2"      = "Off"
+        uat         = "Off"
+        production  = "Off"
+        demo        = "Off"},
+        @{JIRAStatus  = "Flag Disabled"
+        development = "On"
+        qa          = "Off"
+        "qa-2"      = "Off"
+        uat         = "Off"
+        production  = "Off"
+        demo        = "Off"})
+    }
+}        

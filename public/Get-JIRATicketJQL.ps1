@@ -17,9 +17,15 @@ Function Get-JIRATicketJQL {
     }
     process{
             if ($JQL -contains " "){$jql=$jql -replace " ","\+" }
-            $allIssuesuri="/rest/api/latest/search?jql=$($JQL)&maxResults=250&fields=*all"
+            $allIssuesuri="/rest/api/latest/search?jql=$($JQL)&maxResults=100&fields=*all"
             $issuelist=Invoke-RestMethod -Uri "$($JIRAUrl)$($allIssuesuri)" -Method Get -ContentType 'application/json' -Headers $headers
-            $final = $issuelist
+            if ($issuelist.maxResults -lt $issuelist.total){
+                $allIssuesuri="/rest/api/latest/search?jql=$($JQL)&maxResults=100&fields=*all&startAt=100"
+                $issuelist2=Invoke-RestMethod -Uri "$($JIRAUrl)$($allIssuesuri)" -Method Get -ContentType 'application/json' -Headers $headers
+                $final = $issuelist,$issuelist2
+            }else{
+                $final = $issuelist
+            }
     }
     end{
         if ($table){
