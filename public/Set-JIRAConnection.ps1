@@ -9,4 +9,4 @@ function Set-JIRAConnection {
     $global:JIRAURL = $URL
     $global:JIRAAPIKey = $APIKey
     $global:JIRAUser = $User
-}#FmLvwOfWlvLSijyhFrwC2688
+}
