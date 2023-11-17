@@ -2,6 +2,9 @@ function get-jirastatusmap {
     process{
         ([pscustomObject]@{JIRAStatus  = "Open"
         development = "On"
+        'dev-1'     = "Off"
+        'dev-2'     = "Off"
+        'dev-3'     = "Off"
         qa          = "Off"
         'qa-2'      = "Off"
         'qa-3'      = "Off"
@@ -10,6 +13,9 @@ function get-jirastatusmap {
         demo        = "Off"},
         [pscustomObject]@{JIRAStatus  = "In Development"
         development = "On"
+        'dev-1'     = "Off"
+        'dev-2'     = "Off"
+        'dev-3'     = "Off"        
         qa          = "Off"
         'qa-2'      = "Off"
         'qa-3'      = "Off"
@@ -18,6 +24,9 @@ function get-jirastatusmap {
         demo        = "Off"},
         [pscustomObject]@{JIRAStatus  = "QA Testing"
         development = "On"
+        'dev-1'     = "On"
+        'dev-2'     = "On"
+        'dev-3'     = "On"        
         qa          = "On"
         'qa-2'      = "On"
         'qa-3'      = "On"
@@ -26,6 +35,9 @@ function get-jirastatusmap {
         demo        = "Off"},
         [pscustomObject]@{JIRAStatus  = "QA Confirmed"
         development = "On"
+        'dev-1'     = "On"
+        'dev-2'     = "On"
+        'dev-3'     = "On"        
         qa          = "On"
         'qa-2'      = "On"
         'qa-3'      = "On"
@@ -34,6 +46,9 @@ function get-jirastatusmap {
         demo        = "Off"},
         [pscustomObject]@{JIRAStatus  = "Done"
         development = "On"
+        'dev-1'     = "On"
+        'dev-2'     = "On"
+        'dev-3'     = "On"        
         qa          = "On"
         'qa-2'      = "On"
         'qa-3'      = "On"
@@ -42,6 +57,9 @@ function get-jirastatusmap {
         demo        = "On"},
         [pscustomObject]@{JIRAStatus  = "Code Checked In"
         development = "On"
+        'dev-1'     = "On"
+        'dev-2'     = "On"
+        'dev-3'     = "On"        
         qa          = "Off"
         'qa-2'      = "Off"
         'qa-3'      = "Off"
@@ -50,6 +68,9 @@ function get-jirastatusmap {
         demo        = "Off"},
         [pscustomObject]@{JIRAStatus  = "Flag Disabled"
         development = "On"
+        'dev-1'     = "On"
+        'dev-2'     = "On"
+        'dev-3'     = "On"        
         qa          = "Off"
         'qa-2'      = "Off"
         'qa-3'      = "Off"
